@@ -1,25 +1,33 @@
-# Lab M4.04 - State Management Operations
+k# Lab M4.04 - State Management Operations
+
+This lab focused on understanding Terraform state operations in real scenarios,
+including inspection, importing existing infrastructure, and handling drift.
+
+---
 
 ## Operations Practiced
 
 ### 1. State Inspection
-- `terraform state list` - List all resources
-- `terraform state show` - View resource details
-- `terraform show -json` - View full state output in JSON
+- Used `terraform state list` to view managed resources
+- Used `terraform state show` to inspect resource attributes
+- Used `terraform show -json` to explore state structure
 
 ### 2. Resource Import
-- Created an S3 bucket outside Terraform
-- Added matching resource block in `main.tf`
-- Imported bucket into Terraform state with `terraform import`
-- Verified with `terraform state list` and checked changes with `terraform plan`
+- Created an S3 bucket manually using AWS CLI
+- Added the resource block in Terraform configuration
+- Imported the bucket using `terraform import`
+- Verified changes using `terraform plan`
 
 ### 3. State Drift Handling
-- Modified an S3 bucket outside Terraform to create drift
+- Modified a bucket outside Terraform
 - Detected drift with `terraform plan`
-- Used `terraform refresh` and `terraform apply` to reconcile back to desired state
+- Used `terraform refresh` and `terraform apply` to reconcile state
+
+---
 
 ## Key Learnings
-- State is Terraform’s source of truth
-- Manual changes cause drift
-- Import brings existing resources under Terraform management
-- State operations require care
+
+- Terraform state is the source of truth for infrastructure
+- Manual changes outside Terraform create drift
+- Importing allows existing infrastructure to be managed
+- State operations must be performed carefully
